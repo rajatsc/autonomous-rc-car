@@ -1,0 +1,8 @@
+<launch>
+    <arg name="original_map" default="$(find lab4)/final/gates.yaml"/>
+    <arg name="planning_map" default="$(find lab4)/maps/map_for_planning.yaml"/>
+    <arg name="mppi_map" default="$(find lab4)/maps/map_for_mppi.yaml"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg planning_map)" ns="planning"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg mppi_map)" ns="mppi"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg original_map)"/>
+</launch>

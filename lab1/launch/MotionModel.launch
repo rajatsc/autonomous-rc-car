@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="lab1" type="MotionModel.py" name="Motion_Model" output="screen"/>
+</launch>

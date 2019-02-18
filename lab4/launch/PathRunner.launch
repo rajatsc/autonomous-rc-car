@@ -1,0 +1,9 @@
+<launch>
+
+	<include file="$(find lab4)/launch/MultiPlanner.launch"/>
+	<include file="$(find lab4)/launch/PlannerNode.launch"/>
+
+  <node pkg="lab3" type="MPPI.py" name="mppi_node" output="screen"/>
+  <node pkg="lab4" type="PathPublisher.py" name="path_publisher" output="screen"/>
+
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+  <include file="$(find lab2)/launch/FisheyeLineFollower.launch"/>
+  <!-- <include file="$(find lab2)/launch/FisheyeLineFollower.launch"/> -->
+
+  <param name="ackermann_pub_topic" type="str" value="/vesc/high_level/ackermann_cmd_mux/input/nav_0" />
+
+  <param name="point_sub_topic" type="str" value="/pid_fisheye" />
+  <!-- <param name="point_sub_topic" type="str" value="/pid_fisheye" /> -->
+
+  <param name="im_center" type="int" value="320" />
+  <!-- <param name="im_center" type="int" value="320" /> -->
+
+  <node name="PIDController" pkg="lab2" type="PIDController.py" />
+</launch>

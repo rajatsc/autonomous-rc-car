@@ -1,0 +1,6 @@
+<launch>
+	<param name="sub_topic" type="str" value="/camera/fisheye/image_raw" />
+	<param name="pub_topic" type="str" value="/my_pubready_img" />
+	<param name="pid_pub_topic" type="str" value="/pid_fisheye"/>
+	<node name="my_lf" pkg="lab2" type="FisheyeLineFollower.py"/>
+</launch>

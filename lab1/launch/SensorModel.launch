@@ -1,0 +1,7 @@
+<launch>
+	<param name="laser_scan_bag" type="str" value="/home/nvidia/catkin_ws/src/lab1/bags/laser_scans/laser_scan2.bag" />
+	<node pkg="lab1" type="SensorModel.py" name="Sensor_Model" output="screen">
+		<param name="laser_ray_step" value="18"/>
+		<param name="max_range_meters" value="5.6"/>
+	</node>
+</launch>

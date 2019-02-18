@@ -1,0 +1,13 @@
+<launch>
+	<param name="color" type="str" value="red" />
+  <param name="roi_height" type="int" value="180" />
+  <param name="roi_offset" type="int" value="50" />
+  <param name="feedforward" type="bool" value="true" />
+  <include file="$(find lab2)/launch/ImageProcessing.launch"/>
+
+  <param name="mask_sub_topic" type="str" value="/ip/mask" />
+  <param name="ackermann_pub_topic" type="str" value="/vesc/high_level/ackermann_cmd_mux/input/nav_0" />
+
+  <node name="FeedForwardController" pkg="lab2" type="FeedForwardController.py" output="screen" />
+</launch>
+

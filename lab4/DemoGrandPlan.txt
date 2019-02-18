@@ -1,0 +1,62 @@
+== Prepare Data == [5mins]
+
+    1. Download zip, unzip
+
+    2. Plot pixel points on map:
+        Nicholas: `python plot_points_on_map.py <map.pgm> <start.csv> <good.csv> <bad.csv>`
+
+    3. Re order points. Add points if necessarily.
+
+    4. SCP <good.csv> and <bad.csv> to Jetson
+
+
+== Generate Maps/Graphs ==
+
+    1. scp map files to jetson 
+
+    2. Change parameters in MapProcessor.py
+        a. path to original map file
+        b. path to <bad.csv>
+
+    3. Generate map: [1min]
+        `python MapProcessor.py`
+
+    4. Generate graph: [5-10mins]
+        `python GraphGenerator.py`
+
+
+== Launching ==
+
+    1. Change MapServer.launch:
+        a. "original_map"
+
+    2. Change PlannerNode.launch:
+        a. "graph_file"
+
+    3. Change MultiPlanner.launch:
+        a. "csv_file" (path to <good.csv>)
+        b. "start_csv_file" (optional)
+        b. make sure "testing" is false
+
+    4. PathPublisher.py:
+        a. ("non_permissible_region")
+        b. "bad_waypoints_csv"
+
+    2. Run:
+        a. `roslaunch racecar teleop.launch`
+        b. `roslaunch lab4 ParticleFilter.launch`
+        c. `roslaunch lab4 PlannerNode.launch`
+        d. `roslaunch lab4 MultiPlanner.launch`
+        e. `rosrun lab4 PathPublisher.py`
+        f. `rosrun lab4 old_MPPI.py`
+
+
+== Running ==
+
+    1. Record Camera:
+        `rosbag record  -o /media/JetsonSSD/demo_recording /camera/color/image_raw`
+
+    2. Run
+        [Y] (Yellow): Plan from CURRENT robot position
+        [B] (Red): Plan from CSV START config.
+        [A] (Green): Execute Plan (Send to MPPI)

@@ -1,0 +1,13 @@
+<launch>
+	<param name="color" type="str" value="green" />
+  <param name="roi_height" type="int" value="200" />
+  <param name="roi_offset" type="int" value="70" />
+  <param name="feedforward" type="bool" value="false" />
+	<include file="$(find lab2)/launch/ImageProcessing.launch"/>
+
+	<param name="point_sub_topic" type="str" value="/ip/line_center" />
+	<param name="range_sub_topic" type="str" value="/scan" />
+	<param name="ackermann_pub_topic" type="str" value="/vesc/high_level/ackermann_cmd_mux/input/nav_0" />
+
+ 	<node name="PersonFollower" pkg="lab2" type="PersonFollower.py" /> 
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+	<param name="sub_topic" type="str" value="/camera/color/image_raw" />
+	<param name="pub_topic" type="str" value="/ip/line_center" />
+	<!-- <param name="color" type="str" value="red" /> -->
+ 	<node name="ImageProcessing" pkg="lab2" type="ImageProcessing.py" /> 
+</launch>

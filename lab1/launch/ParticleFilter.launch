@@ -1,0 +1,30 @@
+
+<launch>
+
+	<include file="$(find lab1)/launch/MapServer.launch"/>
+
+  <param name="/vesc/speed_to_erpm_offset" value="0.0" />
+  <param name="/vesc/speed_to_erpm_gain" value="4614" />
+  <param name="/vesc/steering_angle_to_servo_offset" value="0.5304" />
+  <param name="/vesc/steering_angle_to_servo_gain" value="-1.2135" />
+
+	<arg name="scan_topic" default="/scan"/>
+	<arg name="odometry_topic" default="/vesc/odom"/>
+	<arg name="laser_ray_step" default="18"/>
+	<arg name="max_particles" default="3000"/>
+	<arg name="motion_model" default="odometry" />
+	<arg name="max_range_meters" default="5.6" />
+	<arg name="resample_type" default="low_variance" />
+	
+	<node pkg="lab1" type="ParticleFilter.py" name="Particle_filter" output="screen">
+		<param name="scan_topic" value="$(arg scan_topic)"/>
+		<param name="odometry_topic" value="$(arg odometry_topic)"/>
+		<param name="laser_ray_step" value="$(arg laser_ray_step)"/>
+		<param name="max_particles" value="$(arg max_particles)"/>
+		<param name="motion_model" value="$(arg motion_model)" />
+		<param name="max_range_meters" value="$(arg max_range_meters)" />
+    <param name="resample_type" value="$(arg resample_type)" />
+		<param name="max_viz_particles" value="60"/>
+		<param name="noise" value="True"/>
+	</node>
+</launch>

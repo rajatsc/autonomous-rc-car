@@ -1,0 +1,18 @@
+<launch> 
+	<param name="color" type="str" value="blue" />
+	<param name="roi_height" type="int" value="130" />
+  <param name="roi_offset" type="int" value="50" />
+  <param name="feedforward" type="bool" value="false" />
+  <include file="$(find lab2)/launch/ImageProcessing.launch"/>
+  <!-- <include file="$(find lab2)/launch/FisheyeLineFollower.launch"/> -->
+
+	<param name="ackermann_pub_topic" type="str" value="/vesc/high_level/ackermann_cmd_mux/input/nav_0" />
+
+	<param name="point_sub_topic" type="str" value="/pp/path_goal" />
+	<!-- <param name="point_sub_topic" type="str" value="/pid_fisheye" /> -->
+
+	<param name="ref_topic" type="str" value="/pf/ta/viz/inferred_pose" />
+	<!-- <param name="im_center" type="int" value="320" /> -->
+
+ 	<node name="PIDController" pkg="lab2" type="PIDController.py" /> 
+</launch>

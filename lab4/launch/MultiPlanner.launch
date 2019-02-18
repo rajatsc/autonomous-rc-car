@@ -1,0 +1,29 @@
+<launch>
+  <param name="path_filter_size" type="int" value="5"/>
+
+  <!-- CSV Files -->
+  <arg name="start_csv_file" default="$(find lab4)/final/start.csv"/>
+  <arg name="csv_file" default="$(find lab4)/final/aggressive_waypoints.csv"/>
+  <arg name="csv_mode" default="pixel" />  <!-- "world" or "pixel" -->
+  <arg name="order_mode" default="manual"/> <!-- "euclidian" or "manual" -->
+
+  <!-- Load Saved Grand Plan -->
+  <arg name="grand_plan_file" default=""/>
+
+  <!-- Misc. -->
+  <arg name="visualize" default="true"/>
+  <arg name="testing" default="false" />
+
+  <node pkg="lab4" type="MultiPlanner.py" name="multi_planner" output="screen">
+    <param name="start_csv_file" value="$(arg start_csv_file)"/>
+    <param name="csv_file" value="$(arg csv_file)"/>
+    <param name="csv_mode" value="$(arg csv_mode)"/>
+    <param name="order_mode" value="$(arg order_mode)"/>
+
+    <param name="grand_plan_file" value="$(arg grand_plan_file)"/>
+
+    <param name="visualize" type="bool" value="$(arg visualize)"/>
+    <param name="testing" type="bool" value="$(arg testing)"/>
+  </node>
+
+</launch>

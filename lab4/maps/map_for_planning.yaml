@@ -1,0 +1,6 @@
+free_thresh: 0.196
+image: map_for_planning.pgm
+negate: 0
+occupied_thresh: 0.65
+origin: [-34.92, -33.64, 0.0]
+resolution: 0.02

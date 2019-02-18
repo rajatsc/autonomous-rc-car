@@ -1,0 +1,25 @@
+
+<launch>
+
+	<include file="$(find lab4)/launch/MapServer.launch"/>
+
+	<arg name="scan_topic" default="/sim/scan"/>
+	<arg name="odometry_topic" default="/vesc/odom"/>
+	<arg name="laser_ray_step" default="18"/>
+	<arg name="max_particles" default="6880"/>
+	<arg name="motion_model" default="kinematic" />
+	<arg name="max_range_meters" default="5.6" />
+	<arg name="resample_type" default="naiive" />
+	
+	<node pkg="ta_lab1" type="ParticleFilter.py" name="Particle_filter" output="screen">
+		<param name="scan_topic" value="$(arg scan_topic)"/>
+		<param name="odometry_topic" value="$(arg odometry_topic)"/>
+		<param name="laser_ray_step" value="$(arg laser_ray_step)"/>
+		<param name="max_particles" value="$(arg max_particles)"/>
+		<param name="motion_model" value="$(arg motion_model)" />
+		<param name="max_range_meters" value="$(arg max_range_meters)" />
+    <param name="resample_type" value="$(arg resample_type)" />
+		<param name="max_viz_particles" value="60"/>
+
+	</node>
+</launch>
