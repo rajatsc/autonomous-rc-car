@@ -1,7 +1,0 @@
-CSE 490 R - Winter 2018
-
-Johan Michalove, Nicholas Ruhland, Ariel Lin, Rajat Chand
-
-Lab 4 - Global Planning
-
-This system finds a global path between waypoints in a map, and executes them on the robot using MPPI.
